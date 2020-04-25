@@ -1,16 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
+import { NewPlayerComponent } from './components/new-player/new-player.component';
+import { MaterialModule } from './modules/material.module';
+import { PlayerService } from './services/player.service';
+import { BoardComponent } from './components/board/board.component';
+import { LocalStorageService } from './services/local-storage.service';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NewPlayerComponent,
+    BoardComponent,
+    DashboardComponent,
   ],
   imports: [
-    BrowserModule
+    MaterialModule,
+    BrowserModule,
+    NoopAnimationsModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    PlayerService,
+    LocalStorageService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
