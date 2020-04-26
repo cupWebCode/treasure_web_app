@@ -1,3 +1,11 @@
 <div class="board">
-  
+  <div [class.locked]="isBoardLocked"></div>
+  <div *ngFor="let obj of squareStorage" class="row">
+    
+    <app-square *ngFor="let box of obj.row" 
+      [position]="box"
+      [chosenSquares]="chosenSquares"
+      (setChosenPosition)="setChosenPosition($event)">{{box}}</app-square>
+
+  </div>
 </div>

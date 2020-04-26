@@ -1,6 +1,22 @@
 .board {
   width: 350px;
   height: 350px;
-  border: 1px solid green;
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  outline: 1px solid red;
+  .row {
+    display: flex;
+  }
+
+  .locked {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+    position: absolute;
+  }
 }

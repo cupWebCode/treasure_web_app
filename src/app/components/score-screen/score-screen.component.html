@@ -1,0 +1,9 @@
+<ul>
+  <!-- <li *ngFor="let i of playersScore$ | async | orderBy">
+    {{i | json}}
+  </li> -->
+  <li *ngFor="let i of playersScore | sortBy:'desc': 'score'">
+    {{i | json}}
+  </li>
+</ul>
+<button (click)="newGame()">Start new game</button>

@@ -1,3 +1,18 @@
 
-<app-board></app-board>
-<app-dashboard [activePlayer]="active_player_info"></app-dashboard>
+<div class="wrapper">
+  <ng-container *ngTemplateOutlet="isGameActive ? playGround: scoreScreen"></ng-container>
+</div>
+
+<ng-template #scoreScreen>
+  <app-score-screen
+  (isGameActive)="setGameStatus($event)"></app-score-screen>
+</ng-template>
+
+<ng-template #playGround>
+  <app-board [chosenSquares]="active_player_info?.chosenSquares"
+  (isGameActive)="setGameStatus($event)"
+  (dashboardData)="active_player_info = $event"></app-board>
+  
+  <app-dashboard [activePlayer]="active_player_info"></app-dashboard>
+
+</ng-template>

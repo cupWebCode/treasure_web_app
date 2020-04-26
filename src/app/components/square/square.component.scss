@@ -1,0 +1,19 @@
+.square {
+  width: 55px;
+  height: 55px;//MOVE TO VARIABLES
+  outline: 1px solid black;
+  background: #FFFFFF;
+
+  &.chosen {
+    background: #ddbfbf;
+    &:hover {
+      background: #ddbfbf;
+      cursor: no-drop;
+    }
+  }
+  &:hover {
+    //TODO add transition
+    background: #868383;
+    cursor: pointer;
+  }
+}

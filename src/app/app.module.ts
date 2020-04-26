@@ -6,19 +6,25 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
-import { NewPlayerComponent } from './components/new-player/new-player.component';
+import { NewPlayerModalComponent } from './components/new-player-modal/new-player.component';
 import { MaterialModule } from './modules/material.module';
 import { PlayerService } from './services/player.service';
 import { BoardComponent } from './components/board/board.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SquareComponent } from './components/square/square.component';
+import { ScoreScreenComponent } from './components/score-screen/score-screen.component';
+import { SortByPipe } from './pipes/sort-by.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewPlayerComponent,
+    NewPlayerModalComponent,
     BoardComponent,
     DashboardComponent,
+    SquareComponent,
+    ScoreScreenComponent,
+    SortByPipe,
   ],
   imports: [
     MaterialModule,

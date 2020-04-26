@@ -10,9 +10,9 @@ export interface DialogData {
   templateUrl: './new-player.component.html',
   styleUrls: ['./new-player.component.scss']
 })
-export class NewPlayerComponent {
+export class NewPlayerModalComponent {
   constructor(
-    public dialogRef: MatDialogRef<NewPlayerComponent>,
+    public dialogRef: MatDialogRef<NewPlayerModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ResponseApp } from '../utils/response-app';
 import { PlayerFormDto } from '../utils/dto/userFormDto';
+import { ChosenValueDto, ChosenPlayerValues } from '../utils/dto/chosenValueDto';
+import { UserScoreDto } from '../utils/dto/userScoreDto';
 
 @Injectable()
 export class PlayerService {
@@ -15,5 +18,15 @@ export class PlayerService {
 
   getPlayer(activePlayer: PlayerFormDto): Observable<ResponseApp<PlayerFormDto>> {
     return this.httpService.get<PlayerFormDto, PlayerFormDto>('', activePlayer);
+  }
+
+  setChosenSquares(squares: ChosenPlayerValues): Observable<ResponseApp<PlayerFormDto>> {
+    return this.httpService.post<PlayerFormDto, ChosenPlayerValues>('reveal', squares);
+  }
+
+  getPlayersScore(): Observable<UserScoreDto[]> {
+    return this.httpService.get<UserScoreDto[], any>('score').pipe(
+      map(el => el.data)
+    );
   }
 }
