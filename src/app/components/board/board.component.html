@@ -1,5 +1,5 @@
 <div class="board">
-  <div [class.locked]="isBoardLocked"></div>
+  <div *ngIf="isBoardLocked" [class.locked]="isBoardLocked">Loading...</div>
   <div *ngFor="let obj of squareStorage" class="row">
     
     <app-square *ngFor="let box of obj.row" 

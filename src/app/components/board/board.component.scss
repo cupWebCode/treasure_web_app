@@ -1,13 +1,15 @@
+@import '../../../styles/modules/variables';
+@import '../../../styles/modules/forms';
+
 .board {
-  width: 350px;
-  height: 350px;
-  margin: 0 auto;
+  width: 275px;
   display: flex;
   flex-wrap: wrap-reverse;
   justify-content: center;
   align-items: center;
   position: relative;
-  outline: 1px solid red;
+  @extend %panel-style;
+  
   .row {
     display: flex;
   }
@@ -18,5 +20,10 @@
     background-color: black;
     opacity: 0.5;
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 37px;
+    color: $white;
   }
 }

@@ -46,6 +46,8 @@ export class SquareComponent implements OnInit, OnChanges, OnDestroy {
     if (matched) {
       const elLink = this.hostElement.nativeElement.firstChild;
       elLink.classList.add('chosen');
+      
+      elLink.classList.add(`chosen_${matched.val}`);
       elLink.innerText = matched.val;
       this.wasChosen = true;
     }

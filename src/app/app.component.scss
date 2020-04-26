@@ -1,5 +1,10 @@
+:host {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
 .wrapper {
   display: flex;
-  width: 500px;
-  margin: 0 auto;
 }

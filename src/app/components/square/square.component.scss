@@ -1,19 +1,57 @@
+@import '../../../styles/modules/variables';
+@import '../../../styles/modules/mixins';
+
 .square {
   width: 55px;
-  height: 55px;//MOVE TO VARIABLES
-  outline: 1px solid black;
-  background: #FFFFFF;
+  height: 55px;
+  outline: 1px solid $black;
+  background: $squareDefaultColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 24px;
+  @include transition(all .5s ease);
 
   &.chosen {
-    background: #ddbfbf;
+    background: $squareChosen;
+    box-shadow: inset 0px 0 10px $black;
+    color: $black;
     &:hover {
-      background: #ddbfbf;
+      background: $squareChosen;
+      box-shadow: inset 0px 0 10px $black;
       cursor: no-drop;
     }
+    &_1 {
+      background: $squareColor1;
+      &:hover {
+        background: $squareColor1;
+      }
+    }
+    &_2 {
+      background: $squareColor2;
+      &:hover {
+        background: $squareColor2;
+      }
+    }
+    &_3 {
+      background: $squareColor3;
+      &:hover {
+        background: $squareColor3;
+      }
+    }
+    &_T {
+      background: $squareColorT;
+      color: $white;
+      &:hover {
+        background: $squareColorT;
+      }
+    }
   }
+
   &:hover {
-    //TODO add transition
-    background: #868383;
+    background: $squareHover;
+    box-shadow: inset 0px 0 10px $black;
     cursor: pointer;
   }
 }

@@ -10,8 +10,8 @@
 
 <ng-template #playGround>
   <app-board [chosenSquares]="active_player_info?.chosenSquares"
-  (isGameActive)="setGameStatus($event)"
-  (dashboardData)="active_player_info = $event"></app-board>
+    (isGameActive)="setGameStatus($event)"
+    (dashboardData)="active_player_info = $event"></app-board>
   
   <app-dashboard [activePlayer]="active_player_info"></app-dashboard>
 

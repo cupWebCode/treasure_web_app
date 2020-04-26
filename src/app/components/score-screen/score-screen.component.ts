@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PlayerService } from 'src/app/services/player.service';
-import { ResponseApp } from 'src/app/utils/response-app';
 import { UserScoreDto } from 'src/app/utils/dto/userScoreDto';
 
 @Component({
@@ -13,17 +12,16 @@ export class ScoreScreenComponent implements OnInit {
   @Output() isGameActive: EventEmitter<boolean> = new EventEmitter<boolean>();
   playersScore$: Observable <UserScoreDto[]>
   playersScore: any
+  
   constructor(public playerService: PlayerService) { }
 
   ngOnInit(): void {
-    //this.playersScore$ = this.playerService.getPlayersScore();
     this.playerService.getPlayersScore().subscribe((res: any) => {
-      this.playersScore = res
+      this.playersScore = res;
     })
   }
 
   newGame() {
     this.isGameActive.emit(true);
   }
-
 }

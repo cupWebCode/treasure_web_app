@@ -1,9 +1,12 @@
-<ul>
-  <!-- <li *ngFor="let i of playersScore$ | async | orderBy">
-    {{i | json}}
-  </li> -->
-  <li *ngFor="let i of playersScore | sortBy:'desc': 'score'">
-    {{i | json}}
-  </li>
-</ul>
-<button (click)="newGame()">Start new game</button>
+<div class="score-screen">
+  <ol>
+    <li *ngFor="let i of playersScore | sortBy:'desc': 'score'" class="row">
+      <p class="item"><span class="name">{{i.player_name}}</span></p> | 
+      <p class="item">Player score - <span>{{i.score}}</span></p>
+    </li>
+  </ol>
+  <div mat-dialog-actions>
+    <button mat-button 
+      (click)="newGame()">Start new game</button>
+  </div>
+</div>

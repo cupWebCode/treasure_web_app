@@ -1,0 +1,31 @@
+@import '../../../styles/modules/variables';
+@import '../../../styles/modules/forms';
+
+.score-screen {
+  @extend %panel-style;
+  min-width: 300px;
+  min-height: 200px;
+  ol {
+    border-bottom: 2px solid $white;
+  }
+  .row {
+    
+    .item {
+      .name {
+        text-overflow: ellipsis;
+        max-width: 150px;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        position: relative;
+        top: 3px;
+      }
+      margin: 10px 15px 10px 10px;
+      display: inline-block;
+      &:last-child {
+        margin-left: 15px;
+        margin-right: 0;
+      }
+    }
+  }
+}

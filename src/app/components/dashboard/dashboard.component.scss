@@ -1,0 +1,20 @@
+@import '../../../styles/modules/variables';
+@import '../../../styles/modules/forms';
+
+.dashboard {
+  background: $panelBg;
+  height: 100%;
+  min-width: 200px;
+  box-sizing: border-box;
+  color: $white;
+  @extend %panel-style;
+  .name {
+    text-overflow: ellipsis;
+    max-width: 150px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    top: 4px;
+  }
+}

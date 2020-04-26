@@ -21,6 +21,7 @@ export class BoardComponent implements OnInit {
   private boardHeight = 5;
   private stepsAmount = 3;
   private stepCounter = this.stepsAmount;
+  private stepsLeft: number;
   private chosenPosition: SquareMouse = {};
   isBoardLocked = false;
   squareStorage: Array<{row: Array<string>}> = this.createSquareNames();
@@ -29,14 +30,14 @@ export class BoardComponent implements OnInit {
     public localStorage: LocalStorageService) { }
 
   ngOnInit(): void {
+    this.stepsLeft = this.boardWidth * this.boardHeight;
     this.createSquareNames();
   }
 
   setChosenPosition(square: SquareMouse) {
-    --this.stepCounter;
     const key = Object.keys(square)[0];
     this.chosenPosition[key] = square[key];
-    if (!this.stepCounter) {
+    if (this.isTimeToSendRequest()) {
       this.isBoardLocked = true;
       const payload = {
         player_id: this.localStorage.getItem(StorageKeys.ActiveUserId),
@@ -46,22 +47,23 @@ export class BoardComponent implements OnInit {
         this.chosenSquares = res.data.chosenSquares;
 
         if (!res.status) {
-          setTimeout(() => {
-            this.isGameActive.emit(res.status);
-          }, 2000)
+          setTimeout(() => (this.isGameActive.emit(res.status)), 2000)
           return;
-        //   alert(res.message);
         }
 
         this.dashboardData.emit(res.data);
         
-        setTimeout(() => {
-          this.isBoardLocked = false;
-        }, 500);
+        setTimeout(() => (this.isBoardLocked = false), 500);
         this.stepCounter = this.stepsAmount;
         this.chosenPosition = {};
       });
     }
+  }
+
+  private isTimeToSendRequest(): boolean {
+    --this.stepsLeft;
+    --this.stepCounter;
+    return !this.stepCounter || !this.stepsLeft;
   }
 
   private createSquareNames(): Array<{row: Array<string>}> {
