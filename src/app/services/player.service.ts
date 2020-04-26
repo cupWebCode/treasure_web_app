@@ -13,19 +13,19 @@ export class PlayerService {
   constructor(public httpService: HttpService) { }
 
   createNewPlayer(player_name: PlayerFormDto): Observable<ResponseApp<PlayerFormDto>> {
-   return this.httpService.post<PlayerFormDto, PlayerFormDto>('', player_name);
+   return this.httpService.post<PlayerFormDto, PlayerFormDto>('player', player_name);
   }
 
   getPlayer(activePlayer: PlayerFormDto): Observable<ResponseApp<PlayerFormDto>> {
-    return this.httpService.get<PlayerFormDto, PlayerFormDto>('', activePlayer);
+    return this.httpService.get<PlayerFormDto, PlayerFormDto>('player', activePlayer);
   }
 
   setChosenSquares(squares: ChosenPlayerValues): Observable<ResponseApp<PlayerFormDto>> {
-    return this.httpService.post<PlayerFormDto, ChosenPlayerValues>('reveal', squares);
+    return this.httpService.post<PlayerFormDto, ChosenPlayerValues>('player/reveal', squares);
   }
 
   getPlayersScore(): Observable<UserScoreDto[]> {
-    return this.httpService.get<UserScoreDto[], any>('score').pipe(
+    return this.httpService.get<UserScoreDto[], any>('player/score').pipe(
       map(el => el.data)
     );
   }
